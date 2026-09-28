@@ -1,29 +1,59 @@
-# Render Blueprint — CYBERSURE FastAPI conversion API
+# Render Blueprint — CYBERSURE full-stack deployment
 #
-# This deploys the EXISTING backend in backend/ (nothing is rewritten):
+# This file deploys BOTH services from the one repo:
+#   1. cybersure-api  — FastAPI backend  (Python / uvicorn)
+#   2. cybersure-app  — React frontend   (Node build → static)
+#
+# Usage:
 #   New → Blueprint → connect this repository → Render uses this file.
 #
-# The service gets a public HTTPS URL, e.g. https://cybersure-api.onrender.com.
-# Put that URL into Vercel as VITE_API_BASE_URL (Production) — see DEPLOYMENT.md.
+# After first deploy, copy the cybersure-api public URL (e.g.
+#   https://cybersure-api.onrender.com) and paste it into the
+#   VITE_API_BASE_URL env var for the cybersure-app service, then
+#   trigger a manual deploy of the frontend.
 
 services:
+  # ── 1. FastAPI backend ────────────────────────────────────────────────────
   - type: web
     name: cybersure-api
     runtime: python
     rootDir: backend
     buildCommand: pip install -r requirements.txt
-    # Production start: bind every interface (uvicorn defaults to 127.0.0.1,
-    # which a platform proxy cannot reach), honour the platform's $PORT, and
-    # never use --reload outside development.
+    # Bind every interface so the platform proxy can reach uvicorn.
+    # $PORT is injected by Render; never hardcode 8000 in production.
+    # No --reload outside development.
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/v1/health
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.9
-      # Only the deployed frontends may call the API from a browser. Never "*".
-      # Comma-separated, no spaces: the Vercel production origin plus the Render
-      # frontend service. Setting this REPLACES the code's default list, so keep
-      # every browser origin you actually use in here. Local dev needs nothing:
-      # the loopback regex in config.py still applies.
+        value: "3.11.9"
+      # Allow the Render frontend origin + Vercel (if deployed there too).
+      # Comma-separated, no spaces. Update if you rename either service.
       - key: CYBERSURE_CORS_ORIGINS
-        value: https://cybersure.vercel.app,https://cybersure-7g67.onrender.com
+        value: "https://cybersure-app.onrender.com,https://cybersure-7g67.onrender.com,https://cybersure.vercel.app"
+
+  # ── 2. React / Vite frontend ──────────────────────────────────────────────
+  - type: web
+    name: cybersure-app
+    runtime: node
+    # Build from repo root (vite.config.ts + package.json live here)
+    rootDir: .
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    # SPA fallback: every URL that doesn't match a real file returns index.html
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      # !! IMPORTANT !!
+      # Replace the placeholder below with your actual cybersure-api URL
+      # once the backend service is first deployed (copy it from the Render
+      # dashboard).  Then trigger a manual deploy of THIS service so Vite
+      # bakes the correct URL into the JS bundle.
+      - key: VITE_API_BASE_URL
+        value: "https://cybersure-api.onrender.com"
+      - key: VITE_API_TIMEOUT_MS
+        value: "30000"
