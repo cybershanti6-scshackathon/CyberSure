@@ -1,0 +1,12 @@
+# Python dependencies for the Vercel Function (api/index.py).
+#
+# The FastAPI app lives in backend/ and its own pins are in
+# backend/requirements.txt (used by the Render blueprint). This root file
+# exists because the Vercel Python runtime installs dependencies from the
+# project root - keep the two lists in step when bumping versions.
+#
+# Runtime only: uvicorn is not needed (Vercel runs the ASGI app itself) and
+# pytest/httpx are development dependencies.
+fastapi>=0.115
+pydantic>=2.7
+python-multipart>=0.0.9

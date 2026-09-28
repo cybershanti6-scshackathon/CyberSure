@@ -41,7 +41,9 @@ class Settings:
     #: parsed by `_split_origins`. Defaults cover:
     #:
     #:   - local dev: Vite on 5173/5174 (and 4173 preview) on localhost/127.0.0.1
-    #:   - production: the deployed frontend on Vercel
+    #:   - production: the deployed frontend on Vercel, and the copy hosted on
+    #     Render (https://cybersure-7g67.onrender.com), which calls this API
+    #     cross-origin because the API is served by the Vercel deployment.
     #:
     #: A production deployment should still set this explicitly, e.g.
     #: `CYBERSURE_CORS_ORIGINS=https://cybersure.vercel.app`, so the allowed
@@ -54,7 +56,8 @@ class Settings:
                 "http://localhost:5173,http://127.0.0.1:5173,"
                 "http://localhost:5174,http://127.0.0.1:5174,"
                 "http://localhost:4173,http://127.0.0.1:4173,"
-                "https://cybersure.vercel.app",
+                "https://cybersure.vercel.app,"
+                "https://cybersure-7g67.onrender.com",
             )
         )
     )
