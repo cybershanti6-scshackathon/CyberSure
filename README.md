@@ -11,29 +11,45 @@ backend; everything else runs in the browser.
 > AI Assistant is a local, context-aware rule engine — no external model is called.
 
 ---
-## 🚀 Project Showcase & Prototype
+## 🚀 Live Prototype & System Demonstration
 
-Experience the project firsthand through our interactive prototype, video walkthrough, and design gallery.**
+Experience the complete user journey and core functionalities of Cybersure through our live interactive deployment, comprehensive video walkthrough, and detailed technical documentation. 
 
----
-### 💻 Interactive Prototype
-Test the user flow, navigation, and core features directly in your browser. 
-
-> **💡 Pro Tip:** For the best experience, view the prototype on a desktop screen. Click anywhere on the screen to highlight the clickable interactive hotspots.
-
-👉 **[Launch the Interactive Prototype Here]([YOUR_PROTOTYPE_LINK_HERE](https://cybersure-1-lwcb.onrender.com/))**
+### 🔗 Quick Access Links
+[![Live Deployment](https://img.shields.io/badge/🌐_Launch_Cybersure_App-0052CC?style=for-the-badge)](https://cybersure-1-lwcb.onrender.com/)
+[![Watch Video](https://img.shields.io/badge/▶️_Watch_Demo_Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](YOUR_VIDEO_LINK_HERE)
+[![Architecture](https://img.shields.io/badge/📐_View_Architecture_Doc-238636?style=for-the-badge)](./Architecture%20Document.pdf)
 
 ---
 
-### 🎥 Video Demonstration
-Don't have time to click through the prototype? Watch this quick video walkthrough explaining the core mechanics and user journey.
+### 💻 Live Interactive Prototype
+Our application is currently deployed and available for live testing. This environment reflects the latest stable build, allowing you to explore the navigation, interface design, and primary features exactly as an end-user would experience them.
 
-<!-- Trick: Wrapping an image inside a link tag creates a clickable video thumbnail! -->
-[![Watch the Demo](DRIVE Link)
-*Click the image above to watch the demonstration video.*
+> **💡 Testing Guide:** We recommend accessing the platform via a modern desktop web browser for the optimal experience. Feel free to interact with the interface, navigate through the available modules, and test the responsiveness of the UI components across different screen sizes.
+
+👉 **[Access the Cybersure Live Prototype](https://cybersure-1-lwcb.onrender.com/)**
 
 ---
-</details>
+
+### 🎥 Video Walkthrough
+For a guided tour of the application's capabilities, we have prepared a detailed video demonstration. This walkthrough covers the user onboarding process, key feature workflows, and highlights the technical solutions driving the user interface. It serves as an excellent primer before diving into the live prototype.
+
+[![Watch the Demo](https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID/maxresdefault.jpg)](YOUR_VIDEO_LINK_HERE)
+*(Click the thumbnail above to view the full demonstration video)*
+
+---
+
+### 📐 System Architecture Document
+To understand the underlying infrastructure, data flow, and technology stack powering this prototype, please review our core technical documentation directly within this repository. 
+
+This concise overview (Max 2 Pages) details the structural foundation of the project, including:
+* **High-Level System Design:** Component interaction and module separation.
+* **Technology Stack:** Rationale behind frontend, backend, and database choices.
+* **Data Flow & Integrations:** How information moves securely through the system.
+* **Deployment Strategy:** The pipeline used to serve the application to Render.
+
+👉 **[Read the Architecture Document](./Architecture%20Document.pdf)** 
+*(Ensure your file is named exactly `Architecture Document.pdf` in the root folder, or change `.pdf` to `.md` in the link above if it is a Markdown file)*
 ---
 ## Quick start
 
