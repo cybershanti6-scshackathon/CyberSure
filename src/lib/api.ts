@@ -56,7 +56,11 @@ const API_PREFIX = '/api/v1';
  * with it is trimmed - otherwise the path becomes `/api/v1/api/v1/...`.
  */
 export const API_BASE_URL: string = normaliseBaseUrl(
-  env.VITE_API_BASE_URL ?? 'http://localhost:8000',
+  // Empty string → relative URLs (/api/v1/...).
+  // • Production: fetch resolves against window.location.origin (same host).
+  // • Local dev: Vite's server.proxy forwards /api → http://localhost:8000.
+  // VITE_API_BASE_URL in .env can still override this for any other setup.
+  env.VITE_API_BASE_URL ?? '',
 );
 
 /** Request timeout in milliseconds, from `VITE_API_TIMEOUT_MS`. */

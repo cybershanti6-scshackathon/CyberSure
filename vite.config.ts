@@ -16,6 +16,15 @@ export default defineConfig({
     // as an opaque "service is not responding" error in the browser rather
     // than as the port conflict it actually is.
     strictPort: true,
+    // Proxy /api requests to the local FastAPI backend during development.
+    // This lets the frontend use relative URLs (/api/v1/...) in both dev and
+    // production — no VITE_API_BASE_URL switching required.
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
+    },
   },
   preview: {
     port: 4173,
