@@ -20,6 +20,10 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
-      # Only the deployed frontend may call the API from a browser. Never "*".
+      # Only the deployed frontends may call the API from a browser. Never "*".
+      # Comma-separated, no spaces: the Vercel production origin plus the Render
+      # frontend service. Setting this REPLACES the code's default list, so keep
+      # every browser origin you actually use in here. Local dev needs nothing:
+      # the loopback regex in config.py still applies.
       - key: CYBERSURE_CORS_ORIGINS
-        value: https://cybersure.vercel.app
+        value: https://cybersure.vercel.app,https://cybersure-7g67.onrender.com

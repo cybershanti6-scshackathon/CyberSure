@@ -20,5 +20,13 @@ export default defineConfig({
   preview: {
     port: 4173,
     strictPort: true,
+    // Vite refuses any request whose Host header is not listed here (a
+    // DNS-rebinding guard), which is what produces
+    // "Blocked request ... not allowed" when the preview runs behind a
+    // platform proxy such as Render. A leading dot matches the domain itself
+    // and every subdomain, so `.onrender.com` covers the generated
+    // `*.onrender.com` service URL - including a new one if the service is
+    // ever re-created. Add any custom domain to this list as well.
+    allowedHosts: ['.onrender.com'],
   },
 });
