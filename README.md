@@ -11,7 +11,30 @@ backend; everything else runs in the browser.
 > AI Assistant is a local, context-aware rule engine — no external model is called.
 
 ---
+## 🚀 Project Showcase & Prototype
 
+Experience the project firsthand through our interactive prototype, video walkthrough, and design gallery.**
+
+---
+### 💻 Interactive Prototype
+Test the user flow, navigation, and core features directly in your browser. 
+
+> **💡 Pro Tip:** For the best experience, view the prototype on a desktop screen. Click anywhere on the screen to highlight the clickable interactive hotspots.
+
+👉 **[Launch the Interactive Prototype Here]([YOUR_PROTOTYPE_LINK_HERE](https://cybersure-1-lwcb.onrender.com/))**
+
+---
+
+### 🎥 Video Demonstration
+Don't have time to click through the prototype? Watch this quick video walkthrough explaining the core mechanics and user journey.
+
+<!-- Trick: Wrapping an image inside a link tag creates a clickable video thumbnail! -->
+[![Watch the Demo](DRIVE Link)
+*Click the image above to watch the demonstration video.*
+
+---
+</details>
+---
 ## Quick start
 
 Two processes: the conversion API, then the frontend. Run them in two terminals.
