@@ -1,0 +1,25 @@
+# Render Blueprint — CYBERSURE FastAPI conversion API
+#
+# This deploys the EXISTING backend in backend/ (nothing is rewritten):
+#   New → Blueprint → connect this repository → Render uses this file.
+#
+# The service gets a public HTTPS URL, e.g. https://cybersure-api.onrender.com.
+# Put that URL into Vercel as VITE_API_BASE_URL (Production) — see DEPLOYMENT.md.
+
+services:
+  - type: web
+    name: cybersure-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    # Production start: bind every interface (uvicorn defaults to 127.0.0.1,
+    # which a platform proxy cannot reach), honour the platform's $PORT, and
+    # never use --reload outside development.
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      # Only the deployed frontend may call the API from a browser. Never "*".
+      - key: CYBERSURE_CORS_ORIGINS
+        value: https://cybersure.vercel.app

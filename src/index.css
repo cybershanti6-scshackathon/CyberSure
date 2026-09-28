@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --shell: 260 13% 5%;
+    --panel: 222 30% 9%;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html.light {
+    color-scheme: light;
+  }
+
+  * {
+    @apply border-ink-700;
+  }
+
+  html.dark * {
+    @apply border-ink-700;
+  }
+
+  body {
+    @apply bg-ink-950 font-sans text-[13.5px] antialiased;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  html.light body {
+    @apply bg-ink-50 text-ink-900;
+  }
+
+  ::selection {
+    @apply bg-accent-500/30;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent-500 ring-offset-2 ring-offset-ink-950;
+  }
+
+  html.light :focus-visible {
+    @apply ring-offset-white;
+  }
+}
+
+@layer components {
+  /* ---------- Surfaces ---------- */
+  .surface {
+    @apply rounded-xl border border-ink-700/80 bg-ink-900 shadow-panel;
+  }
+
+  html.light .surface {
+    @apply border-ink-100 bg-white shadow-panel;
+  }
+
+  .surface-2 {
+    @apply rounded-lg border border-ink-700/70 bg-ink-850;
+  }
+
+  html.light .surface-2 {
+    @apply border-ink-100 bg-ink-50;
+  }
+
+  /* ---------- Typography helpers ---------- */
+  .eyebrow {
+    @apply text-[10.5px] font-semibold uppercase tracking-[0.12em] text-ink-400;
+  }
+
+  html.light .eyebrow {
+    @apply text-ink-400;
+  }
+
+  .metric {
+    @apply text-[28px] font-semibold leading-none tracking-tight text-ink-50;
+    font-variant-numeric: tabular-nums;
+  }
+
+  html.light .metric {
+    @apply text-ink-900;
+  }
+
+  .text-dim {
+    @apply text-ink-300;
+  }
+
+  html.light .text-dim {
+    @apply text-ink-500;
+  }
+
+  .text-dimmer {
+    @apply text-ink-400;
+  }
+
+  html.light .text-dimmer {
+    @apply text-ink-400;
+  }
+
+  /* ---------- Form controls ---------- */
+  .field {
+    @apply w-full rounded-lg border border-ink-600 bg-ink-800 px-3 py-2 text-[13px] text-ink-50 transition
+      placeholder:text-ink-400 hover:border-ink-500 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/25
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  html.light .field {
+    @apply border-ink-100 bg-white text-ink-900 hover:border-ink-300;
+  }
+
+  .field-invalid {
+    @apply border-red-500/70 focus:border-red-500 focus:ring-red-500/25;
+  }
+
+  /* ---------- Scrollbars ---------- */
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(120, 140, 170, 0.45) transparent;
+  }
+
+  .scroll-thin::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(120, 140, 170, 0.4);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  .scroll-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(140, 160, 190, 0.65);
+  }
+}
+
+@layer utilities {
+  .grid-noise {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  html.light .grid-noise {
+    background-image:
+      linear-gradient(rgba(10, 20, 40, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(10, 20, 40, 0.035) 1px, transparent 1px);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ * Landing hero network animation
+ * -----------------------------------------------------------------------------
+ * The hero graph draws its links as SVG paths and moves packets with SVG
+ * <animateMotion>, so only two CSS animations are needed: a link "flow" trace
+ * and a slow scan sweep. Both are subtle, loop slowly and are disabled when the
+ * OS asks for reduced motion, leaving a clean static diagram.
+ * -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .cybersure-anim * {
+    animation: none !important;
+  }
+}
+
+.cybersure-anim [data-cybersure-flow] {
+  animation: cybersure-flow 3.6s linear infinite;
+}
+
+.cybersure-anim [data-cybersure-pulse] {
+  animation: cybersure-pulse-ring 3.6s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes cybersure-flow {
+  from {
+    stroke-dashoffset: 258;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cybersure-pulse-ring {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.9);
+    transform-origin: center;
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+    transform-origin: center;
+  }
+}
+
+/* Slow horizontal scan sweep across the hero graph. */
+@keyframes cybersure-sweep-x {
+  0% {
+    transform: translateX(-30%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(420%);
+    opacity: 0;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ * Print — used by the Reports "Download Demo PDF" action, which opens the
+ * browser print dialog so the report can be saved as a PDF. Only the report
+ * body is printed; navigation, header and side panels are suppressed.
+ * -------------------------------------------------------------------------- */
+@media print {
+  html.dark,
+  html.light {
+    color-scheme: light;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  header[role='banner'],
+  aside,
+  nav,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  main {
+    overflow: visible !important;
+  }
+
+  .print\:border-0 {
+    border: 0 !important;
+  }
+
+  .print\:bg-transparent {
+    background: transparent !important;
+  }
+
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+
+  /* Keep report sections together when paginating. */
+  section,
+  article {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a[href]::after {
+    content: '';
+  }
+}
+
+@media print {
+  .surface,
+  .surface-2 {
+    border-color: #d1d5db !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+}

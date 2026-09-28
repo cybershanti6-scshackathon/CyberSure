@@ -1,0 +1,46 @@
+{
+  "name": "cybersure",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "CYBERSURE - Intelligent Network Security Configuration & Compliance Platform (interactive prototype). The configuration converter runs on the FastAPI service in backend/.",
+  "scripts": {
+    "dev": "vite",
+    "dev:api": "node scripts/dev-api.mjs",
+    "dev:api:reload": "node scripts/dev-api.mjs --reload",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview --port 4173",
+    "verify:engine": "node scripts/verify.mjs",
+    "verify:ui": "esbuild scripts/render-check.tsx --bundle --platform=node --format=cjs --outfile=scripts/render-check.cjs --jsx=transform --external:jsdom --external:react --external:react-dom --external:react-dom/client --external:react-dom/test-utils --external:react-router-dom --log-level=error && node scripts/render-check.cjs",
+    "verify:workflow": "esbuild scripts/workflow-check.tsx --bundle --platform=node --format=cjs --outfile=scripts/workflow-check.cjs --jsx=transform --external:jsdom --external:react --external:react-dom --external:react-dom/client --external:react-dom/test-utils --external:react-router-dom --log-level=error && node scripts/workflow-check.cjs",
+    "verify:desktop": "esbuild scripts/probe.tsx --bundle --platform=node --format=cjs --outfile=scripts/probe.cjs --jsx=transform --external:jsdom --external:react --external:react-dom --external:react-dom/client --external:react-dom/test-utils --external:react-router-dom --log-level=error && node scripts/probe.cjs",
+    "verify:smoke": "esbuild scripts/smoke-check.tsx --bundle --platform=node --format=cjs --outfile=scripts/smoke-check.cjs --jsx=transform --external:jsdom --external:react --external:react-dom --external:react-dom/client --external:react-dom/test-utils --external:react-router-dom --log-level=error && node scripts/smoke-check.cjs",
+    "verify:nodata": "node scripts/nodata-check.mjs",
+    "verify:api": "node scripts/api-check.mjs",
+    "verify:api:required": "node scripts/api-check.mjs --required",
+    "verify:browserflow": "esbuild scripts/browserFlowEntry.ts --bundle --platform=node --format=cjs --outfile=scripts/browser-flow.bundle.cjs --alias:@=./src --define:import.meta.env='{}' --log-level=error && node scripts/browser-flow.mjs",
+    "verify:browserflow:required": "esbuild scripts/browserFlowEntry.ts --bundle --platform=node --format=cjs --outfile=scripts/browser-flow.bundle.cjs --alias:@=./src --define:import.meta.env='{}' --log-level=error && node scripts/browser-flow.mjs --required",
+    "verify:success": "node scripts/success-condition.mjs",
+    "verify:backend": "cd backend && python -m pytest -q",
+    "verify": "npm run typecheck && npm run verify:engine && npm run verify:ui && npm run verify:workflow && npm run verify:smoke && npm run verify:nodata && npm run verify:desktop && npm run verify:api && npm run verify:browserflow && npm run verify:success"
+  },
+  "dependencies": {
+    "lucide-react": "^0.469.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "jsdom": "^29.1.1",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.6.3",
+    "vite": "^5.4.11"
+  }
+}
