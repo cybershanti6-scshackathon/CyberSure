@@ -33,9 +33,11 @@ services:
         value: "https://cybersure-app.onrender.com,https://cybersure-7g67.onrender.com,https://cybersure.vercel.app"
 
   # ── 2. React / Vite frontend ──────────────────────────────────────────────
-  - type: web
+  # type: static → Render builds once then serves dist/ as a CDN-backed static
+  # site. No server process is needed or started, which is why type:web was
+  # failing (it tried to run vite preview, which requires devDependencies).
+  - type: static
     name: cybersure-app
-    runtime: node
     # Build from repo root (vite.config.ts + package.json live here)
     rootDir: .
     buildCommand: npm ci && npm run build
