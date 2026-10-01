@@ -40,7 +40,7 @@ For a guided tour of the application's capabilities, we have prepared a detailed
 ---
 
 
-# 🏗️ System Architecture
+### 🏗️ System Architecture
 
 ```text
 ┌─────────────────────────────────────────────────────┐
