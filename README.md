@@ -98,7 +98,7 @@ live attack simulation, ticketing, CRM, user management, and any claim of real d
 connectivity. The AI Assistant is local and rule-based; it does not call Gemini or any other
 provider.
 
-# 🔮 Future Scope
+### 🔮 Future Scope
 
 Potential future development includes:
 
@@ -116,7 +116,7 @@ Potential future development includes:
 - Automated configuration remediation with explicit authorization
 
 ---
-# ⚠️ Prototype Scope & Limitations
+### ⚠️ Prototype Scope & Limitations
 
 CyberSure is an **SIH prototype** and should be evaluated according to the functionality implemented in the submitted version.
 
@@ -130,7 +130,7 @@ Important limitations may include:
 - Production deployment would require additional authentication, authorization, secure secret management, logging, monitoring, testing, and infrastructure hardening.
 
 ---
-# 👥 Team
+### 👥 Team
 
 **Project:** CyberSure  
 **Problem Statement:** 26155  
@@ -138,7 +138,7 @@ Important limitations may include:
 **Theme:** Blockchain & Cybersecurity  
 **Category:** Software
 
-
+---
 
 ## Quick start
 
