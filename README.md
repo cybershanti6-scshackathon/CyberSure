@@ -39,18 +39,56 @@ For a guided tour of the application's capabilities, we have prepared a detailed
 
 ---
 
-### 📐 System Architecture Document
-To understand the underlying infrastructure, data flow, and technology stack powering this prototype, please review our core technical documentation directly within this repository. 
 
-This concise overview (Max 2 Pages) details the structural foundation of the project, including:
-* **High-Level System Design:** Component interaction and module separation.
-* **Technology Stack:** Rationale behind frontend, backend, and database choices.
-* **Data Flow & Integrations:** How information moves securely through the system.
-* **Deployment Strategy:** The pipeline used to serve the application to Render.
+# 🏗️ System Architecture
 
-👉 **[Read the Architecture Document](./Architecture%20Document.pdf)** 
-*(Ensure your file is named exactly `Architecture Document.pdf` in the root folder, or change `.pdf` to `.md` in the link above if it is a Markdown file)*
+```text
+┌─────────────────────────────────────────────────────┐
+│                    CYBERSURE UI                     │
+│             Web Dashboard / Frontend                │
+└────────────────────────┬────────────────────────────┘
+                         │
+                         │ REST API
+                         ▼
+┌─────────────────────────────────────────────────────┐
+│                  FASTAPI BACKEND                     │
+│                                                     │
+│  API Routes │ Validation │ Orchestration │ Results  │
+└─────────────┬──────────────┬──────────────┬─────────┘
+              │              │              │
+              ▼              ▼              ▼
+       ┌────────────┐ ┌──────────────┐ ┌─────────────┐
+       │  Vendor    │ │   Security   │ │ Compliance  │
+       │ Processing │ │   Scanners   │ │   Engine    │
+       └─────┬──────┘ └──────┬───────┘ └──────┬──────┘
+             │               │                │
+             └───────────────┼────────────────┘
+                             ▼
+                    ┌────────────────┐
+                    │ Risk / Findings│
+                    └───────┬────────┘
+                            │
+                  ┌─────────┴─────────┐
+                  ▼                   ▼
+          ┌──────────────┐    ┌──────────────┐
+          │ AI Assistant │    │   Reporting  │
+          │ / Explanation│    │    Engine    │
+          └──────┬───────┘    └──────┬───────┘
+                 │                   │
+                 └─────────┬─────────┘
+                           ▼
+                  ┌─────────────────┐
+                  │ Dashboard / PDF │
+                  │     Report      │
+                  └─────────────────┘
+```
+
+For the detailed two-page architecture document, see:
+
+**[`docs/ARCHITECTURE.pdf`](docs/ARCHITECTURE.pdf)**
+
 ---
+
 
 
 ## Prototype boundaries
