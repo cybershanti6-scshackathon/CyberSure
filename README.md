@@ -51,6 +51,55 @@ This concise overview (Max 2 Pages) details the structural foundation of the pro
 👉 **[Read the Architecture Document](./Architecture%20Document.pdf)** 
 *(Ensure your file is named exactly `Architecture Document.pdf` in the root folder, or change `.pdf` to `.md` in the link above if it is a Markdown file)*
 ---
+
+
+## Prototype boundaries
+
+Deliberately out of scope: billing, payments, social features, threat-intel feeds, a SOC console,
+live attack simulation, ticketing, CRM, user management, and any claim of real device
+connectivity. The AI Assistant is local and rule-based; it does not call Gemini or any other
+provider.
+
+# 🔮 Future Scope
+
+Potential future development includes:
+
+- Additional network/security vendors
+- Expanded security control coverage
+- Continuous configuration monitoring
+- Scheduled compliance assessments
+- Role-based access control
+- Enterprise authentication
+- Centralized audit logs
+- Cloud deployment
+- SIEM/SOC integrations
+- More advanced risk prioritization
+- Expanded AI-assisted remediation
+- Automated configuration remediation with explicit authorization
+
+---
+# ⚠️ Prototype Scope & Limitations
+
+CyberSure is an **SIH prototype** and should be evaluated according to the functionality implemented in the submitted version.
+
+Important limitations may include:
+
+- Scanner coverage is limited to the checks implemented in the prototype.
+- Vendor support depends on the implemented vendor modules.
+- AI-generated explanations should be reviewed by a qualified security professional before operational use.
+- Compliance mapping in the prototype does not constitute legal certification or formal third-party certification.
+- Non-intrusive scanning should be used only on systems for which the user has authorization.
+- Production deployment would require additional authentication, authorization, secure secret management, logging, monitoring, testing, and infrastructure hardening.
+
+---
+# 👥 Team
+
+**Project:** CyberSure  
+**Problem Statement:** 26155  
+**Organization:** National Technical Research Organisation (NTRO)  
+**Theme:** Blockchain & Cybersecurity  
+**Category:** Software
+
 ## Quick start
 
 Two processes: the conversion API, then the frontend. Run them in two terminals.
@@ -392,50 +441,3 @@ scripts/
 `/issues` · `/compliance` · `/reports` · `/assistant` · `/changes` · `/settings`
 
 ---
-
-## Prototype boundaries
-
-Deliberately out of scope: billing, payments, social features, threat-intel feeds, a SOC console,
-live attack simulation, ticketing, CRM, user management, and any claim of real device
-connectivity. The AI Assistant is local and rule-based; it does not call Gemini or any other
-provider.
-
-# 🔮 Future Scope
-
-Potential future development includes:
-
-- Additional network/security vendors
-- Expanded security control coverage
-- Continuous configuration monitoring
-- Scheduled compliance assessments
-- Role-based access control
-- Enterprise authentication
-- Centralized audit logs
-- Cloud deployment
-- SIEM/SOC integrations
-- More advanced risk prioritization
-- Expanded AI-assisted remediation
-- Automated configuration remediation with explicit authorization
-
----
-# ⚠️ Prototype Scope & Limitations
-
-CyberSure is an **SIH prototype** and should be evaluated according to the functionality implemented in the submitted version.
-
-Important limitations may include:
-
-- Scanner coverage is limited to the checks implemented in the prototype.
-- Vendor support depends on the implemented vendor modules.
-- AI-generated explanations should be reviewed by a qualified security professional before operational use.
-- Compliance mapping in the prototype does not constitute legal certification or formal third-party certification.
-- Non-intrusive scanning should be used only on systems for which the user has authorization.
-- Production deployment would require additional authentication, authorization, secure secret management, logging, monitoring, testing, and infrastructure hardening.
-
----
-# 👥 Team
-
-**Project:** CyberSure  
-**Problem Statement:** 26155  
-**Organization:** National Technical Research Organisation (NTRO)  
-**Theme:** Blockchain & Cybersecurity  
-**Category:** Software
