@@ -16,7 +16,7 @@ The platform is designed around a simple workflow:
 ## 🔗 Project Resources
 ### 🔗 Quick Access Links
 [![Live Deployment](https://img.shields.io/badge/🌐_Launch_Cybersure_App-0052CC?style=for-the-badge)](https://cybersure-1-lwcb.onrender.com/)
-[![Watch Video](https://img.shields.io/badge/▶️_Watch_Demo_Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/mSXHPqQ3k9E)
+[![Watch Video](https://img.shields.io/badge/▶️_Watch_Demo_Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/by8MSuUkHF0)
 [![Architecture](https://img.shields.io/badge/📐_View_Architecture_Doc-238636?style=for-the-badge)](https://drive.google.com/file/d/15wpCjkQmqcJ63OBVUrho2W_uN5MW3o5C/view?usp=sharing)
 
 
